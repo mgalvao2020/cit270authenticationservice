@@ -16,18 +16,21 @@ app.get('/',(request,response)=>{
 
 
 app.post('/login', (request, response)=>{ // a post request is used by a cliente to send a new info to an API
+    
+    const requestHashedPassword = md5(request.body.password);
+    const redisHahedPassword= await redisClient.hGet('password' , request.body.username);
     const loginRequest = request.body; // check the data was sent. Request has a lot of data inside.
     console.log("Request Body", JSON.stringify(request.body));
     // search database for username, and retrive current password
 
     // compare the hashed version of the password that was sent with the hashed version of the database
-
-    if (loginRequest.userName=="aba@google.com" && loginRequest.password=="123456@Manoel"){ // 
+    if (loginRequest.userName=="27a464ab9f8e4ab3ebb72cf16cce4dd3" && loginRequest.password=="94a3aaca2b06d95271ec067ef91d7c1d"){ // 
         response.status(200); // 200 means OKay
         response.send("Welcome");
     } else{
         response.status(401); // 401 means Unauthorized
         response.send("Unauthorized");
+
     }
 
 });
