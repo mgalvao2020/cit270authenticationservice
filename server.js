@@ -46,6 +46,14 @@ app.get('/',(request,response)=>{
 
 app.post('/login', validatePassword);
 
+const signup=(request, reponse)=>{
+    //hmset (username, password);
+    
+
+}
+
+app.post('/signup', signup);
+
 
 
 
