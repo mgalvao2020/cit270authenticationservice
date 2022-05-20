@@ -11,15 +11,16 @@ const redisClient = createClient(
         port:6379,
         host:"127.0.0.1",
     },
-}
+}   
 ); //this creates a connection to redis database
 // We are buildin an API // Building our own server on a computer. 
+
 app.use(bodyParser.json()); // use the middleware (cal it before anything else happens on each request)
 
-app.listen(port, ()=>{   // We are listening to an incoming request
+app.listen(port, async ()=>{     // We are listening to an incoming request
+    await redisClient.connect() //creating a TCP socket with Redis. 
     console.log("listening on port: "+port);
 }); //listen ///we are using a non standard port (not 443-secur or 80-nonsecure)//any port greater than a 1000 is pos //validate password function //const  validatePassword 
-
 
 const validatePassword = async (request, response)=>{
     await redisClient.connect(); //creating a TCP socet with Redis
