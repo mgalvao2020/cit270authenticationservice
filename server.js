@@ -40,6 +40,16 @@ const validatePassword = async (request, response)=>{
     }
 
 }
+
+const savePassword = async (request, response)=>{
+    const clearTextPassword = request.body.password
+    await redisClient.hSet('passwords', request.body.userName, rashedTextPassword);
+    response.status(200); // status 200 means Okay
+    response.send({result:"Saved"});
+}    
+  
+
+
 app.get('/',(request,response)=>{
     response.send("Hello Manoel Galvao")
 }); //respond
@@ -48,11 +58,11 @@ app.post('/login', validatePassword);
 
 const signup=(request, reponse)=>{
     //hmset (username, password);
-    
-
 }
 
-app.post('/signup', signup);
+
+app.post('/signup', savePassword);
+app.post('/login', validatePassword);
 
 
 
