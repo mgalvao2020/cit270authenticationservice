@@ -1,6 +1,6 @@
 const express = require('express'); //imports the library
 const https = require('https')
-const port = 3000; // defining which port is gonna be used
+const port = 443; // defining which port is gonna be used
 const app = express(); //Use the library. We call the library. Creates and express a application
 const md5 = require('md5'); //importing a library
 const bodyParser = require('body-parser'); //body parser is called middleware (special to call request from a client)
@@ -21,10 +21,8 @@ app.use(bodyParser.json()); // use the middleware (cal it before anything else h
 
 https.createServer({
     key: fs.readFileSync('server.key'),
-    cert: fs.readFileSync('server.cert')
-}, app)
-
-app.listen(port, async ()=>{     // We are listening to an incoming request
+    cert: fs.readFileSync('server.cert'),
+    passphrase: "P@ssw0rd" ,app).listen(port, async ()=>{     // We are listening to an incoming request
     await redisClient.connect() //creating a TCP socket with Redis. 
     console.log("listening on port: "+port);
 }); //listen ///we are using a non standard port (not 443-secur or 80-nonsecure)//any port greater than a 1000 is pos //validate password function //const  validatePassword 
