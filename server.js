@@ -22,7 +22,7 @@ app.use(bodyParser.json()); // use the middleware (cal it before anything else h
 https.createServer({
     key: fs.readFileSync('server.key'),
     cert: fs.readFileSync('server.cert'),
-    passphrase: "P@ssw0rd" ,app).listen(port, async ()=>{     // We are listening to an incoming request
+    passphrase: "P@ssw0rd"} , app).listen(port, async ()=>{     // We are listening to an incoming request
     await redisClient.connect() //creating a TCP socket with Redis. 
     console.log("listening on port: "+port);
 }); //listen ///we are using a non standard port (not 443-secur or 80-nonsecure)//any port greater than a 1000 is pos //validate password function //const  validatePassword 
