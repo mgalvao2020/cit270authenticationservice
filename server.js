@@ -7,14 +7,17 @@ const bodyParser = require('body-parser'); //body parser is called middleware (s
 const {createClient} = require('redis');
 const { response }=require('express');
 const fs = require('fs');
-const redisClient = createClient(
-{
-    socket:{
-        port:6379,
-        host:"127.0.0.1",
-    }
-}   
-); //this creates a connection to redis database
+
+const redisClient = createClient({ url: 'redis://:@10.128.0.2:6379'});
+
+//const redisClient = createClient(
+//{
+  //  socket:{
+    //    port:6379,
+      //  host:"127.0.0.1",
+    //}
+//}   
+//); //this creates a connection to redis database
 // We are buildin an API // Building our own server on a computer. 
 
 app.use(bodyParser.json()); // use the middleware (cal it before anything else happens on each request)
