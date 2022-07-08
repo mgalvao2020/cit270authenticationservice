@@ -44,17 +44,17 @@ spec:
               path: /
               # This is the port to use to see if my API is running
               port: 443
-              initialDelaySeconds: 3
-              periodSeconds: 3
-            readinessProbe:
-              httpGet:
-              # This is the url to call to see if my API has started
-                path: /
-              # This is the port to see if my APU has started
-                port: 443
-              initialDelaySeconds: 3
-              periodSeconds: 3
-              
+            initialDelaySeconds: 3
+            periodSeconds: 3
+          readinessProbe:
+            httpGet:
+            # This is the url to call to see if my API has started
+              path: /
+            # This is the port to see if my APU has started
+              port: 443
+            initialDelaySeconds: 3
+            periodSeconds: 3
+
 
 
 
