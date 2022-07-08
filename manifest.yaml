@@ -23,7 +23,7 @@ spec:
           # This is  the command to run once the container starts
           command: ["npm"]
           # These are the arguments to pass to the command when the ..
-          argss: ["run","start"]
+          args: ["run","start"]
           # This is the port my container is listening on, ex: 443 or...
           ports:
             - containerPort: 443
