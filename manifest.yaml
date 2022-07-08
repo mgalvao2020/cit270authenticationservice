@@ -44,6 +44,8 @@ spec:
               path: /
               # This is the port to use to see if my API is running
               port: 443
+              #
+              scheme: HTTPS
             initialDelaySeconds: 3
             periodSeconds: 3
           readinessProbe:
@@ -52,10 +54,21 @@ spec:
               path: /
             # This is the port to see if my APU has started
               port: 443
+              #...
+              scheme: HTTPS
             initialDelaySeconds: 3
             periodSeconds: 3
 
-
-
-
-    
+#This is the start of a new document for the Load Balancer
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: manoel-cit270-loadbalancer
+spec:
+  selector:
+    app: manoel-cit270
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 3000
