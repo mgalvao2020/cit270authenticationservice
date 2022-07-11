@@ -19,7 +19,7 @@ spec:
       containers:
         - name: manoel-cit270 
           # This is the Dockerhub url to my image
-          image: manoel/cit270 
+          image: manoelgalvao/cit270
           # This is  the command to run once the container starts
           command: ["npm"]
           # These are the arguments to pass to the command when the ..
