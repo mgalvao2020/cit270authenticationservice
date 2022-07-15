@@ -68,7 +68,7 @@ const savePassword = async (request, response)=>{
 
 
 app.get('/',(request,response)=>{
-    response.send("Hello Manoel Galvao at BYU-Idaho - IT WORKED!!!!!")
+    response.send("Hello Manoel Galvao BYU-Idaho - IT WORKED!!!!! good job")
 }); //respond
 
 app.post('/login', validatePassword);

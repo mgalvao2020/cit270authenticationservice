@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: vm-project-manoel-ingress
+  namespace: default
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-targes: /
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.i;o/cluster/issuer: "letsencrypt-cluster-issuer"
+spec:
+  tls:
+  - hosts:
+    - rancher-dev-bff.citwdd.net
+    secretName: vm-project-manoel-secretname    
+  rules:
+  - host: rancher-dev-bff.citwdd.net
+    http: 
+      paths:
+      - backend:
+          serviceName: vm-project-bff-dev-loadbala 
+          servicePort: 80
